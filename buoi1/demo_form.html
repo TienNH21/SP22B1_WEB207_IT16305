@@ -82,7 +82,9 @@
 
                     <form class="" action="" method="">
                         <div class="mt-2 row">
-                            <label class="col-2">Họ tên</label>
+                            <label class="col-2">
+                                Họ tên <span class="text-danger">*</span>
+                            </label>
                             <div class="col-10">
                                 <input
                                     class="form-control"
@@ -94,7 +96,7 @@
                         </div>
 
                         <div class="mt-2 row">
-                            <label class="col-2">Email</label>
+                            <label class="col-2">Email<span class="text-danger">*</span></label>
                             <div class="col-10">
                                 <input
                                     class="form-control"
@@ -105,7 +107,7 @@
                         </div>
 
                         <div class="mt-2 row">
-                            <label class="col-2">Mật khẩu</label>
+                            <label class="col-2">Mật khẩu<span class="text-danger">*</span></label>
                             <div class="col-10">
                                 <input
                                     class="form-control"
@@ -127,11 +129,12 @@
                         </div>
 
                         <div class="mt-2 row">
-                            <label class="col-2">Chuyên ngành</label>
+                            <label class="col-2">Chuyên ngành<span class="text-danger">*</span></label>
                             <div class="col-10">
                                 <select
                                     name="chuyen_nganh"
                                     class="form-select">
+                                    <option selected disabled>Mời chọn chuyên ngành</option>
                                     <option value="udpm">UDPM</option>
                                     <option value="tktw">TKTW</option>
                                     <option value="ltmt">LTMT</option>
@@ -140,7 +143,7 @@
                         </div>
 
                         <div class="mt-2 row">
-                            <label class="col-2">Giới tính</label>
+                            <label class="col-2">Giới tính<span class="text-danger">*</span></label>
                             <div class="col-10 row">
                                 <div class="col-2">
                                     <input
@@ -148,7 +151,8 @@
                                         name="gioi_tinh"
                                         value="nam"
                                         id="gioi_tinh_nam"
-                                        class="form-check-input">
+                                        class="form-check-input"
+                                        checked>
                                     <label for="gioi_tinh_nam">Nam</label>
                                 </div>
                                 <div class="col-2">
