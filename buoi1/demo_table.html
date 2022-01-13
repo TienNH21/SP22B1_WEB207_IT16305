@@ -9,7 +9,31 @@
 </head>
 <body>
     <div class="container">
-        <header class="row bg-danger" style="height: 100px;"></header>
+        <header class="row">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://wowslider.com/sliders/demo-93/data1/images/lake.jpg" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://wowslider.com/sliders/demo-93/data1/images/sunset.jpg" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://wowslider.com/sliders/demo-93/data1/images/landscape.jpg" class="d-block w-100">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </header>
         <nav class="row navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">IT16305</a>
@@ -72,6 +96,12 @@
                         <li class="list-group-item">
                             <a href="https://uqoojcos5nobj.vcdn.cloud/uploads/2021/11/nokia-black-300x300.jpg">
                                 Apple
+                                <span class="badge bg-danger"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Siêu khuyến mại">
+                                    Hot
+                                </span>
                             </a>
                         </li>
                     </ul>
@@ -81,9 +111,125 @@
                 <div class="container p-0">
                     <div class="card">
                         <div class="card-header">
-                            <button class="btn btn-success">Thêm mới</button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_create">Thêm mới</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal_create" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <form class="" action="" method="">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Thêm mới sinh viên</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="alert alert-success">
+                                                            Thêm mới thành công
+                                                        </div>
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">
+                                                                Họ tên <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="col-10">
+                                                                <input
+                                                                    class="form-control"
+                                                                    type="text"
+                                                                    name="full_name"
+                                                                    />
+                                                                <small class="text-danger">Không được để trống</small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">Email<span class="text-danger">*</span></label>
+                                                            <div class="col-10">
+                                                                <input
+                                                                    class="form-control"
+                                                                    type="email"
+                                                                    name="email"
+                                                                    />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">Mật khẩu<span class="text-danger">*</span></label>
+                                                            <div class="col-10">
+                                                                <input
+                                                                    class="form-control"
+                                                                    type="password"
+                                                                    name="password"
+                                                                    />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">Ảnh đại diện</label>
+                                                            <div class="col-10">
+                                                                <input
+                                                                    class="form-control"
+                                                                    type="file"
+                                                                    name="avatar"
+                                                                    />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">Chuyên ngành<span class="text-danger">*</span></label>
+                                                            <div class="col-10">
+                                                                <select
+                                                                    name="chuyen_nganh"
+                                                                    class="form-select">
+                                                                    <option selected disabled>Mời chọn chuyên ngành</option>
+                                                                    <option value="udpm">UDPM</option>
+                                                                    <option value="tktw">TKTW</option>
+                                                                    <option value="ltmt">LTMT</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-2 row">
+                                                            <label class="col-2">Giới tính<span class="text-danger">*</span></label>
+                                                            <div class="col-10 row">
+                                                                <div class="col-2">
+                                                                    <input
+                                                                        type="radio"
+                                                                        name="gioi_tinh"
+                                                                        value="nam"
+                                                                        id="gioi_tinh_nam"
+                                                                        class="form-check-input"
+                                                                        checked>
+                                                                    <label for="gioi_tinh_nam">Nam</label>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <input
+                                                                        type="radio"
+                                                                        name="gioi_tinh"
+                                                                        value="nu"
+                                                                        id="gioi_tinh_nu"
+                                                                        class="form-check-input">
+                                                                    <label for="gioi_tinh_nu">Nữ</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Thêm mới</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <button class="col-4 btn btn-info offset-8"
+                                        data-bs-toggle="collapse" data-bs-target="#tbl_sv">Mở rộng</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive collapse" id="tbl_sv">
                             <table class="table table-striped table-dark text-nowrap">
                                 <thead>
                                     <tr>
@@ -132,7 +278,32 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-footer">Tổng số: 3 Khách hàng</div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    Tổng số: 3 Khách hàng
+                                </div>
+                                <div class="col-6">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link"><<</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">>></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
