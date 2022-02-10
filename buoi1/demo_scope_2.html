@@ -31,6 +31,9 @@
         <!-- Child 2 -->
         <div ng-controller="my_controller2" style="height: 200px; background-color: lightgreen;">
             <p>Child 2: {{ msg_2 }}</p>
+
+            <p>{{ root_msg }}</p>
+            <p>{{ $parent.$parent.root_msg }}</p>
         </div>
     </div>
 
@@ -45,8 +48,9 @@
             $scope.msg_1 = "Đây là message 1";
         }
 
-        function myController2($scope) {
+        function myController2($scope, $rootScope) {
             $scope.msg_2 = "Đây là message 2";
+            $rootScope.root_msg = "Đây là message root";
         }
 
         app.controller("parent_controller", parentController);
