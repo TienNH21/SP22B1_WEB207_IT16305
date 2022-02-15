@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT16305 - Demo Filter</title>
+</head>
+<body ng-app="demo_filter">
+    <div ng-controller="my_controller" style="font-size: 30px;">
+        <p>{{ my_number }}</p>
+        <!--
+            {{ gia_tri | number : so_cso_thap_phan }}
+            {{ gia_tri | currency : don_vi_tien : so_cso_thap_phan }}
+        -->
+        <p>{{ my_number | number : 4 }}</p>
+        <p>{{ my_number | currency : 'VNĐ' : 2 }}</p>
+
+        <p>{{ now }}</p>
+        <p>{{ now | date : 'dd/MM/yyyy HH:mm:ss' : '+07' }}</p>
+
+        <p>{{ name | uppercase }}</p>
+        <p>{{ name | lowercase }}</p>
+
+        <p>{{ sv | json }}</p>
+
+        <!--
+            limitTo: {{ arr | limitTo : so_phan_tu : start }}
+            orderBy: {{ arr | orderBy : thuoc_tinh : chieu_sap_xep }}
+                chieu_sap_xep: true -> giảm, false -> tăng
+        -->
+
+        <hr>
+        <ul>
+            <li ng-repeat="item in ds_mon_hoc | limitTo : 3 : 1" >
+                {{ item.ma }} - {{ item.ten }}
+            </li>
+        </ul>
+        <hr>
+
+        <ul>
+            <li ng-repeat="item in ds_mon_hoc | orderBy : 'ma' : false" >
+                {{ item.ma }} - {{ item.ten }}
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/angularjs.min.js"></script>
+    <script>
+        const app = angular.module("demo_filter", []);
+        function myController($scope, $http) {
+            $scope.my_number = 123456789.987654321;
+            $scope.now = new Date();
+            $scope.name = "Nguyen Van A";
+            $scope.sv = {
+                ten: "Ng Van A",
+                ma: "PH12345",
+                gioi_tinh: 1
+            };
+
+            $scope.ds_mon_hoc = [
+                { ma: "WEB207", ten: "Frontend Framework" },
+                { ma: "SOF2041", ten: "Du an mau" },
+                { ma: "COM108", ten: "Nhap mon lap trinh" },
+                { ma: "MOB1014", ten: "Lap trinh Java 1" },
+                { ma: "SOF203", ten: "Lap trinh Java 3" },
+                { ma: "MOB1023", ten: "Lap trinh Java 2" },
+            ];
+
+            const url = "https://6debb33a087bab.lhrtunnel.link/data";
+            $http.get(url) // Gửi request (yêu cầu) tới URL
+                .then(function (response) {
+                    $scope.dssv = response.data;
+                });
+        }
+
+        app.controller("my_controller", myController);
+    </script>
+</body>
+</html>
