@@ -79,7 +79,7 @@
             </aside>
             <article class="col-12 col-md-9 p-0 pt-3">
                 <div class="container p-0" ng-controller="form_controller">
-                    <form name="form_sv" action="" method="">
+                    <form name="form_sv" ng-submit="onSubmitForm($event)" action="" method="">
                         <div class="mt-2 row">
                             <label class="col-2">
                                 Họ tên <span class="text-danger">*</span>
@@ -235,7 +235,7 @@
     <script>
         const app = angular.module("demo_form", []);
 
-        function formController($scope) {
+        function formController($scope, $http) {
             $scope.sv = {
                 fullname: "",
                 email: "",
@@ -250,10 +250,26 @@
                 { ma: "tktw", ten: "Thiết kế trang web" },
                 { ma: "ltmt", ten: "Lập trình máy tính" },
             ];
+
+            $scope.onSubmitForm = function ($event) {
+                $event.preventDefault();
+                // console.log($scope.sv);
+                const data = {
+                    ho_ten: $scope.sv.fullname,
+                    ma_sv: "PH12312", // thay bằng mã sv
+                    gioi_tinh: $scope.sv.gioi_tinh,
+                    chuyen_nganh: $scope.sv.chuyen_nganh
+                };
+                const url = "https://b8bd0f0e1ed308.lhrtunnel.link/data";
+                $http.post(url, data)
+                    .then(function (response) {
+                        console.log(response);
+                    });
+            }
         }
 
         function tableController($scope, $http) {
-            const url = "https://ea6831087d0664.lhrtunnel.link/data";
+            const url = "https://b8bd0f0e1ed308.lhrtunnel.link/data";
             $scope.dssv = [];
             $http.get(url) // Gửi request (yêu cầu) tới URL
                 .then(function (response) {
